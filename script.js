@@ -31,7 +31,13 @@ async function loadData() {
     stats.style.display = 'none';
 
     try {
-        const response = await fetch(`/api-test-simple.php?limit=${limit}`);
+        const response = await fetch(`/api/TestSimple/get/?limit=${limit}`);
+       
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
 
         loading.style.display = 'none';
@@ -47,6 +53,7 @@ async function loadData() {
     } catch (err) {
         loading.style.display = 'none';
         showError('Ошибка подключения: ' + err.message);
+        console.error('API Error:', err);
     }
 }
 
