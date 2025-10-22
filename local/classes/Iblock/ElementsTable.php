@@ -6,18 +6,18 @@ use Bitrix\Main\Entity\Query;
 use Bitrix\Main\Entity\ReferenceField;
 use Bitrix\Main\DB\SqlExpression;
 use Bitrix\Main\Type\DateTime;
+use Bitrix\Iblock\ElementPropertyTable;
 
 class ElementsTable extends \Bitrix\Iblock\ElementTable
 {
     public static function setDefaultScope($query){
         $query
-            ->where("IBLOCK_ID", 1) // Ваш инфоблок ID=1
+            ->where("IBLOCK_ID", 1)
             ->where("ACTIVE", "Y");
     }
 
     public static function withSelect(Query $query)
     {
-        // Присоединяем свойства
         $query->registerRuntimeField(
             'DESCRIPTION_PROP',
             new ReferenceField(
@@ -25,7 +25,7 @@ class ElementsTable extends \Bitrix\Iblock\ElementTable
                 ElementPropertyTable::class,
                 [
                     'this.ID' => 'ref.IBLOCK_ELEMENT_ID',
-                    'ref.IBLOCK_PROPERTY_ID' => new SqlExpression('?', 1), // Свойство "Описание"
+                    'ref.IBLOCK_PROPERTY_ID' => new SqlExpression('?', 1),
                 ]
             )
         );
@@ -37,7 +37,7 @@ class ElementsTable extends \Bitrix\Iblock\ElementTable
                 ElementPropertyTable::class,
                 [
                     'this.ID' => 'ref.IBLOCK_ELEMENT_ID',
-                    'ref.IBLOCK_PROPERTY_ID' => new SqlExpression('?', 2), // Свойство "Цена"
+                    'ref.IBLOCK_PROPERTY_ID' => new SqlExpression('?', 2),
                 ]
             )
         );

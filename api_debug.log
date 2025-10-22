@@ -1,0 +1,165 @@
+2025-10-22 09:37:31
+REQUEST_URI: /local/api/Test/get/
+SCRIPT_NAME: /local/api/index.php
+PHP_SELF: /local/api/index.php
+GET: Array
+(
+)
+
+
+Parsed - Class: Test, Method: get
+REQUEST_URI: /local/api/Test/get/
+GET: Array
+(
+)
+
+POST: Array
+(
+)
+
+2025-10-22 09:37:35
+REQUEST_URI: /local/api/Test/get/
+SCRIPT_NAME: /local/api/index.php
+PHP_SELF: /local/api/index.php
+GET: Array
+(
+)
+
+
+Parsed - Class: Test, Method: get
+REQUEST_URI: /local/api/Test/get/
+GET: Array
+(
+)
+
+POST: Array
+(
+)
+
+2025-10-22 09:37:50
+REQUEST_URI: /local/api/Test/get/
+SCRIPT_NAME: /local/api/index.php
+PHP_SELF: /local/api/index.php
+GET: Array
+(
+)
+
+
+Parsed - Class: Test, Method: get
+REQUEST_URI: /local/api/Test/get/
+GET: Array
+(
+)
+
+POST: Array
+(
+)
+
+2025-10-22 09:38:03
+REQUEST_URI: /local/api/Test/get/
+SCRIPT_NAME: /local/api/index.php
+PHP_SELF: /local/api/index.php
+GET: Array
+(
+)
+
+
+Parsed - Class: Test, Method: get
+REQUEST_URI: /local/api/Test/get/
+GET: Array
+(
+)
+
+POST: Array
+(
+)
+
+2025-10-22 09:38:15
+REQUEST_URI: /local/api/?CLASS=Test&METHOD=get
+SCRIPT_NAME: /local/api/index.php
+PHP_SELF: /local/api/index.php
+GET: Array
+(
+    [CLASS] => Test
+    [METHOD] => get
+)
+
+
+Parsed - Class: CLASS=Test&METHOD=get, Method: get
+REQUEST_URI: /local/api/?CLASS=Test&METHOD=get
+GET: Array
+(
+    [CLASS] => Test
+    [METHOD] => get
+)
+
+POST: Array
+(
+)
+
+REQUEST_URI: /local/api/?CLASS=Test&METHOD=get
+GET: Array
+(
+    [CLASS] => Test
+    [METHOD] => get
+)
+
+POST: Array
+(
+)
+
+REQUEST_URI: /local/api/?CLASS=Test&METHOD=get
+GET: Array
+(
+    [CLASS] => Test
+    [METHOD] => get
+)
+
+POST: Array
+(
+)
+
+REQUEST_URI: /local/api/?CLASS=Test&METHOD=get
+GET: Array
+(
+    [CLASS] => Test
+    [METHOD] => get
+)
+
+POST: Array
+(
+)
+
+REQUEST_URI: /local/api/?CLASS=Test&METHOD=get
+GET: Array
+(
+    [CLASS] => Test
+    [METHOD] => get
+)
+
+POST: Array
+(
+)
+
+REQUEST_URI: /local/api/?CLASS=Test&METHOD=get
+GET: Array
+(
+    [CLASS] => Test
+    [METHOD] => get
+)
+
+POST: Array
+(
+)
+
+REQUEST_URI: /local/api/?CLASS=Test&METHOD=get
+GET: Array
+(
+    [CLASS] => Test
+    [METHOD] => get
+)
+
+POST: Array
+(
+)
+

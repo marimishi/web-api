@@ -1,26 +1,24 @@
 <?php
 
-namespace Legacy\API;
+namespace api\classes;
 
 use Bitrix\Main\Loader;
 use Legacy\General\DataProcessor;
 use Legacy\General\Constants;
-use Legacy\Iblock\PromotionsTable;
+use Legacy\Iblock\ElementsTable;
 
-class Promotions
+class Test
 {
     private static function processData($query)
     {
         $result = [];
 
         while ($arr = $query->fetch()) {
-            $result[] = [
+            $result = [
                 'id' => $arr['ID'],
                 'code' => $arr['CODE'],
-                'image' => getFilePath($arr['IMAGE_VALUE']),
-                'title' => $arr['TITLE_VALUE'],
-                'badge' => $arr['BADGE_VALUE'],
-                'description' =>\Bitrix\Main\Web\Json::decode($arr['PREVIEW_DESCRIPTION_VALUE'] ?? '{}')['blocks'][0]['value'],
+                'title' => $arr['NAME'],
+                'price' => $arr['PRICE_VALUE'] ?? null,
             ];
         }
 
@@ -36,10 +34,13 @@ class Promotions
                 'id' => $arr['ID'],
                 'code' => $arr['CODE'],
                 'date' => $arr['ACTIVE_FROM'] ? $arr['ACTIVE_FROM']->format('c') : null,
-                'image' => getFilePath($arr['IMAGE_VALUE']),
-                'title' => $arr['TITLE_VALUE'],
-                'badge' => $arr['BADGE_VALUE'],
-                'content' =>\Bitrix\Main\Web\Json::decode($arr['DETAIL_CONTENT_VALUE'] ?? '{}')['blocks'],
+                'title' => $arr['NAME'],
+                'description' => $arr['DESCRIPTION_VALUE'] ?? null,
+                'price' => $arr['PRICE_VALUE'] ?? null,
+                'sort' => $arr['SORT'],
+                'date_create' => $arr['DATE_CREATE'] ? $arr['DATE_CREATE']->format('c') : null,
+                'timestamp_x' => $arr['TIMESTAMP_X'] ? $arr['TIMESTAMP_X']->format('c') : null,
+                'active_to' => $arr['ACTIVE_TO'] ? $arr['ACTIVE_TO']->format('c') : null,
             ];
 
             foreach ($result['content'] as &$item) {
@@ -58,10 +59,10 @@ class Promotions
     {
         $result = [];
         if (Loader::includeModule('iblock')) {
-            $page = (int)$arRequest['page'];
-            $limit = (int)$arRequest['limit'];
+            $page = (int)($arRequest['page'] ?? 1);
+            $limit = (int)($arRequest['limit'] ?? 10);
 
-            $q = PromotionsTable::query()
+            $q = ElementsTable::query()
                 ->countTotal(true)
                 ->withSelect()
                 ->setLimit($limit)
@@ -83,7 +84,7 @@ class Promotions
 
         $result = [];
         if (Loader::includeModule('iblock')) {
-            $q = PromotionsTable::query()
+            $q = ElementsTable::query()
                 ->withSelect()
                 ->withFilterByIDs($ids)
                 ->exec()
@@ -96,15 +97,15 @@ class Promotions
 
     public static function getByCode($arRequest)
     {
-        $code = $arRequest['code'];
+        $code = $arRequest['code'] ?? '';
 
         if(!$code) {
-            throw new \Exception('Не передан код новости');
+            throw new \Exception('Не передан код');
         }
 
         $result = [];
         if (Loader::includeModule('iblock')) {
-            $q = PromotionsTable::query()
+            $q = ElementsTable::query()
                 ->withDetailSelect()
                 ->withFilterByСode($code);
             $result = self::processDetailData($q);

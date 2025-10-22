@@ -28,3 +28,10 @@ ErrorDocument 404 /404.php
   ExpiresByType text/css "access plus 3 day"
   ExpiresByType application/javascript "access plus 3 day"  
 </IfModule>
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} ^/api/(.*)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/(.*)$ /local/api/$1 [L,QSA]

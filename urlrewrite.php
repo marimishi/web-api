@@ -1,5 +1,13 @@
 <?php
 $arUrlRewrite=array (
+    10 => 
+  array (
+    'CONDITION' => '#^/api/(.*)#',
+    'RULE' => 'local/api/$1',
+    'ID' => '',
+    'PATH' => '/local/api/index.php',
+    'SORT' => 100,
+  ),
   2 => 
   array (
     'CONDITION' => '#^={$arResult["FOLDER"].$arParams["FILTER_URL_TEMPLATE"]}\\??(.*)#',
